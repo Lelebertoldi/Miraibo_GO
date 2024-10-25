@@ -1,2 +1,0 @@
-# Miraibo_GO
- 
