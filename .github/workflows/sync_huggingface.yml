@@ -19,4 +19,4 @@ jobs:
         github: ${{ secrets.GITHUB_TOKEN }}
         user: PinkLB  # Substitua pelo seu nome de usuário do Hugging Face
         space: MiraiboGO        # Substitua pelo nome do seu espaço
-        token: ${{ secrets.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 }}  # Token do Hugging Face
+        token: ${{ secrets.HF_TOKEN }}  # Token do Hugging Face
