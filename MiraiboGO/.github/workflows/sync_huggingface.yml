@@ -1,0 +1,22 @@
+name: Sync to Hugging Face Spaces
+
+on:
+  push:
+    branches:
+      - main  # ou outro branch que você deseja usar
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Sync to Hugging Face Spaces
+      uses: JacobLinCool/huggingface-sync@v1
+      with:
+        github: ${{ secrets.GITHUB_TOKEN }}
+        user: PinkLB  # Substitua pelo seu nome de usuário do Hugging Face
+        space: MiraiboGO        # Substitua pelo nome do seu espaço
+        token: ${{ secrets.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 }}  # Token do Hugging Face
