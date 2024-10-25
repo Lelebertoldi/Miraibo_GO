@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Pesquisa de Breed</title>
+    <title>Pesquisa de Breed Miraibo GO</title>
     <style>
         body {
             /* Caminho da imagem de fundo */
@@ -89,9 +89,10 @@
         }
         
         async function searchByName() {
-            let name = document.getElementById("searchName").value; // Obtém o valor do input sem remover espaços
-            name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(); // Converte a primeira letra para maiúscula e o restante para minúscula
-            const response = await fetch(`/search_by_name?name=${name}`);
+            let name = document.getElementById("searchName").value.trim(); // Remove espaços extras no início e no fim
+            name = name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // Capitaliza cada palavra
+            const encodedName = encodeURIComponent(name); // Codifica o nome para a URL
+            const response = await fetch(`/search_by_name?name=${encodedName}`); // Usa o nome codificado na URL
             const data = await response.json();
             
             let results = "<h3>Resultados da Pesquisa por Nome:</h3><ul>";
@@ -117,7 +118,13 @@
 <body>
     <h1>Miraibo GO</h1>
     <h1>Pesquisa de Breed</h1>
-    
+
+    <h1>Pesquise seu Breed, basta colocar o ID ou nome do miraibo desejado para obter as junções de pais necessárias</h1>
+
+    <h1 style="font-size: 20px;">Na pesquisa por ID coloque o ID numérico da lista do album de miraibos, se necessário adicione B após o número. Exemplo: 93 para pesquisar pelo Correciano, ou 93B para pesquisar pelo Correvolt</h1>
+
+    <h1 style="font-size: 20px;">Na pesquisa por nome coloque o nome do miraibo como está na lista do album de miraibos. Exemplo: Uivo Noturno, com o espaço, ou Tece-gelo, com o hifen.</h1>
+
     <h2>Pesquisar por ID</h2>
     <input type="text" id="searchId" placeholder="Digite o ID">
     <button onclick="searchById()">Pesquisar</button>
