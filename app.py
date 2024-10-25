@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.abspath('.'))
 
 # Defina o caminho para o arquivo Parquet
 caminho_arquivo = 'data/breed.parquet'
